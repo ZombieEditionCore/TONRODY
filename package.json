@@ -1,0 +1,28 @@
+{
+  "name": "tonrody",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZombieEditionCore/TONRODY.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZombieEditionCore/TONRODY/issues"
+  },
+  "homepage": "https://github.com/ZombieEditionCore/TONRODY#readme",
+  "dependencies": {
+    "@twa-dev/sdk": "^8.0.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ton": "^13.9.0",
+    "tonweb": "^0.0.66"
+  },
+  "devDependencies": {}
+}
