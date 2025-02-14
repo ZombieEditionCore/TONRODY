@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TONRODY</title>
+    <script src="https://unpkg.com/@tonconnect/sdk@latest"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            background-color: #0088cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .referrals {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>TONRODY</h1>
+        <button id="connectWallet">Подключить кошелек</button>
+        <p id="walletAddress">Адрес: -</p>
+        <p id="walletBalance">Баланс: -</p>
+        <button id="deposit">Внести депозит</button>
+        <button id="showReferrals">Мои рефералы</button>
+    </div>
+
+    <!-- Модальное окно с рефералами -->
+    <div class="referrals" id="referralModal">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Реферальная система</h2>
+        <p>Уровень 1: 10% прибыли</p>
+        <p>Уровень 2: 5% прибыли</p>
+        <p>Уровень 3: 2% прибыли</p>
+    </div>
+
+    <script>
+        const tonConnect = new TONConnectSDK.TonConnect();
+
+        document.getElementById('connectWallet').addEventListener('click', async () => {
+            try {
+                await tonConnect.connectWallet();
+                const account = tonConnect.account;
+                document.getElementById('walletAddress').innerText = "Адрес: " + account.address;
+                updateBalance(account.address);
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        async function updateBalance(address) {
+            // Подключение к TON API для получения баланса
+            document.getElementById('walletBalance').innerText = "Баланс: 10 TON (Пример)";
+        }
+
+        document.getElementById('deposit').addEventListener('click', () => {
+            alert("Функция депозита в разработке!");
+        });
+
+        document.getElementById('showReferrals').addEventListener('click', () => {
+            document.getElementById('referralModal').style.display = "block";
+        });
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('referralModal').style.display = "none";
+        });
+    </script>
+
+</body>
+</html>
